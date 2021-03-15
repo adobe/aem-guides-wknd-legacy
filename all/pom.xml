@@ -58,6 +58,13 @@
                             <artifactId>aem-guides-wknd.core</artifactId>
                             <target>/apps/wknd-packages/application/install</target>
                         </embedded>
+                        <embedded>
+                            <!-- Third party dependency; Embed the package in the ui.apps package for deployment  -->
+                            <groupId>com.adobe.acs</groupId>
+                            <artifactId>acs-aem-commons-content</artifactId>
+                            <!-- Place in a `container` folder, as this artifact contains sub-packages, which in turn contain code and content -->
+                            <target>/apps/wknd-vendor-packages/container/install</target>
+                        </embedded>                        
                     </embeddeds>
                 </configuration>
             </plugin>
@@ -173,6 +180,14 @@
             <version>2.0.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
+        <!-- Third party dependency -->
+        <dependency>
+            <groupId>com.adobe.acs</groupId>
+            <artifactId>acs-aem-commons-content</artifactId>
+            <type>content-package</type>
+            <classifier>min</classifier>
+            <scope>provided</scope>
+        </dependency>                
     </dependencies>
 </project>
 

@@ -4,8 +4,6 @@ This project is intended to illustrate example conditions identified by Adobe's 
 
 This Git repository contains a project rife with bad practices, incompatible code, and configuration. The violations are used to illustrate a starting condition which can then be juxtaposed against the remediation for specific Best Practice Analyzer codes, broken out by Git branches.
 
-The `main` branch contains the AEM Maven project after being run through the [AEM  Repository Modernizer](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/moving/refactoring-tools/repo-modernizer.html?lang=en#refactoring-tools) tool, in order to provide a consistent, best practices Maven project structure baseline that specific BPA-code remediation branches can be easily compared against.
-
 ## Best Practice Analyzer code branches
 
 Adobe Best Practice Analyzer reports violations by [code](https://experienceleague.adobe.com/docs/experience-manager-pattern-detection/table-of-contents/aso.html), and each code provides details about what the violation is, and how to resolve it.
@@ -13,3 +11,19 @@ Adobe Best Practice Analyzer reports violations by [code](https://experienceleag
 For violations this project's `main` Git branch a corresponding Git branch, in the format `code/<bpa code>` contains the changes required for resolve that, and only that, violation.
 
 Performing a Github.com Compare between the `main` and `code/<bpa code>` provides a clear view of the changes required to mitigate the violation.
+
+## INST - Installed Artifact
+
+This branch (`code/inst`) illustrates how to resolve INST violations.
+
+* [INST Documentation](https://experienceleague.adobe.com/docs/experience-manager-pattern-detection/table-of-contents/inst.html)
+
+### Update summary
+
+This example illustrates how to properly include a 3rd party package-based dependency, that's available on Maven Central, to your AEM project.
+
+#### Key changes
+
+* Remove inclusion of the 3rd party package in the AEM project as a sub-package
+* Add the 3rd party dependency to the project's `all` project's `pom.xml` as an `embedded`
+  * See [Embedding Sub-packages in the Container Package](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/implementing/developing/aem-project-content-package-structure.html#xml-embeddeds) for details and options.

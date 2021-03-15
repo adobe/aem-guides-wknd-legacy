@@ -731,7 +731,8 @@ Bundle-DocURL:
             <dependency>
                 <groupId>com.adobe.acs</groupId>
                 <artifactId>acs-aem-commons-content</artifactId>
-                <version>4.11.2</version>
+                <!-- Increase to an AEM as a Cloud Service compatible version -->
+                <version>5.0.2</version>
                 <type>content-package</type>
                 <classifier>min</classifier>
             </dependency>            

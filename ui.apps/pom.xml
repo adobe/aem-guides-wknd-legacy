@@ -113,14 +113,7 @@
                     <properties>
                         <cloudManagerTarget>none</cloudManagerTarget>
                     </properties>
-                    <!-- Third party dependency; Embed the package in the ui.apps package for deployment  -->
-                    <subPackages>
-                        <subPackage>
-                            <groupId>com.adobe.acs</groupId>
-                            <artifactId>acs-aem-commons-content</artifactId>
-                            <filter>true</filter>
-                        </subPackage>
-                    </subPackages>
+                    <!-- Third party dependencies are embedded via all/pom.xml's embeddeds -->
                 </configuration>
             </plugin>
             <plugin>
@@ -187,14 +180,6 @@
             <artifactId>org.apache.sling.scripting.sightly.runtime</artifactId>
             <version>1.2.0-1.4.0</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- Third party dependency -->
-        <dependency>
-            <groupId>com.adobe.acs</groupId>
-            <artifactId>acs-aem-commons-content</artifactId>
-            <type>content-package</type>
-            <classifier>min</classifier>
-            <scope>provided</scope>
-        </dependency>
+        </dependency>        
     </dependencies>
 </project>
