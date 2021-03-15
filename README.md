@@ -4,6 +4,8 @@ This project is intended to illustrate example conditions identified by Adobe's 
 
 This Git repository contains a project rife with bad practices, incompatible code, and configuration. The violations are used to illustrate a starting condition which can then be juxtaposed against the remediation for specific Best Practice Analyzer codes, broken out by Git branches.
 
+The `legacy` branch contains a basic AEM Maven project generate from the AEM Project Archetype v10, with several additional custom violations.
+
 ## Best Practice Analyzer code branches
 
 Adobe Best Practice Analyzer reports violations by [code](https://experienceleague.adobe.com/docs/experience-manager-pattern-detection/table-of-contents/aso.html), and each code provides details about what the violation is, and how to resolve it.
