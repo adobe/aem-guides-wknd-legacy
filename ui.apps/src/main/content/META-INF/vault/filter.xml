@@ -5,7 +5,7 @@
     </filter>
     <filter root="/apps/sling" />
     <filter root="/libs/cq/core/content/nav/wknd"/>
-    <filter root="/oak:index/damAssetLucene"/>
+    <filter root="/oak:index/damAssetLucene-6-custom-1"/>
     <filter root="/oak:index/wkndId"/>
     <filter root="/oak:index/wkndTerminationDate"/>
 </workspaceFilter>

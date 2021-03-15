@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:oak="http://jackrabbit.apache.org/oak/ns/1.0" xmlns:dam="http://www.day.com/dam/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:wknd="https://ns.wknd.site/jcr/wknd/1.0" xmlns:rep="internal"
-    jcr:primaryType="nt:unstructured">
+    jcr:primaryType="nt:unstructured">    
     <!-- Customized OOTB damAssetLucene to add wkndAdventureType property to index --> 
-    <damAssetLucene
+    <damAssetLucene-6-custom-1
         jcr:primaryType="oak:QueryIndexDefinition"
-        async="async"
-        compatVersion="{Long}2"
+        async="async" compatVersion="{Long}2"
         evaluatePathRestrictions="{Boolean}true"
-        type="lucene">
+        includedPaths="[/content/dam]"
+        tags="[visualSimilaritySearch]"
+        type="lucene"
+        queryPaths="[/content/dam]">
         <aggregates jcr:primaryType="nt:unstructured">
             <dam:Asset jcr:primaryType="nt:unstructured">
                 <include0
@@ -37,8 +39,12 @@
                 <include8
                     jcr:primaryType="nt:unstructured"
                     path="jcr:content/usages"/>
+                <include9
+                    jcr:primaryType="nt:unstructured"
+                    path="jcr:content/renditions/cqdam.text.txt/jcr:content"/>
             </dam:Asset>
         </aggregates>
+        <facets jcr:primaryType="nt:unstructured"secure="statistical" topChildren="100"/>
         <indexRules jcr:primaryType="nt:unstructured">
             <dam:Asset jcr:primaryType="nt:unstructured">
                 <properties jcr:primaryType="nt:unstructured">
@@ -52,10 +58,12 @@
                     <dcFormat
                         jcr:primaryType="nt:unstructured"
                         analyzed="{Boolean}true"
+                        facets="{Boolean}true"
                         name="jcr:content/metadata/dc:format"
                         propertyIndex="{Boolean}true"/>
                     <damStatus
                         jcr:primaryType="nt:unstructured"
+                        facets="{Boolean}true"
                         name="jcr:content/metadata/dam:status"
                         propertyIndex="{Boolean}true"/>
                     <videoCodec
@@ -71,6 +79,7 @@
                         boost="{Double}2.0"
                         name="jcr:content/metadata/dc:title"
                         nodeScopeIndex="{Boolean}true"
+                        ordered="{Boolean}true"
                         propertyIndex="{Boolean}true"
                         useInSpellcheck="{Boolean}true"
                         useInSuggest="{Boolean}true"/>
@@ -107,7 +116,7 @@
                         jcr:primaryType="nt:unstructured"
                         name="jcr:content/metadata/videoBitrate"
                         propertyIndex="{Boolean}true"/>
-                    <audioBitRate
+                    <audioBitrate
                         jcr:primaryType="nt:unstructured"
                         name="jcr:content/metadata/audioBitrate"
                         propertyIndex="{Boolean}true"/>
@@ -124,8 +133,8 @@
                     <expirationDate
                         jcr:primaryType="nt:unstructured"
                         name="jcr:content/metadata/prism:expirationDate"
-                        ordered="{Boolean}true"
-                        propertyIndex="{Boolean}true"
+                        ordered="{Boolean}true" 
+                        propertyIndex="{Boolean}true" 
                         type="Date"/>
                     <onTime
                         jcr:primaryType="nt:unstructured"
@@ -169,23 +178,30 @@
                         ordered="{Boolean}true"
                         propertyIndex="{Boolean}true"
                         type="Long"/>
-                    <simsearchVersion
-                        jcr:primaryType="nt:unstructured"
-                        name="jcr:content/metadata/simsearchVersion"
-                        nullCheckEnabled="{Boolean}true"
-                        propertyIndex="{Boolean}true"/>
                     <predictedTags
                         jcr:primaryType="nt:unstructured"
-                        index="{Boolean}true"
                         isRegexp="{Boolean}true"
                         name="jcr:content/metadata/predictedTags/*/name"
+                        similarityTags="{Boolean}true" index="{Boolean}true"
                         propertyIndex="{Boolean}false"/>
                     <predictedTagsConfidence
                         jcr:primaryType="nt:unstructured"
-                        index="{Boolean}true"
                         isRegexp="{Boolean}true"
                         name="jcr:content/metadata/predictedTags/*/confidence"
+                        index="{Boolean}true"
                         propertyIndex="{Boolean}false"/>
+                    <predictedTagsDynamicBoost
+                        jcr:primaryType="nt:unstructured"
+                        dynamicBoost="{Boolean}true"
+                        isRegexp="{Boolean}true"
+                        name="jcr:content/metadata/predictedTags/.*"
+                        propertyIndex="{Boolean}true"/>
+                    <imageFeatures
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/metadata/imageFeatures/haystack0"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        useInSimilarity="{Boolean}true"/>
                     <damSearchElevate
                         jcr:primaryType="nt:unstructured"
                         analyzed="{Boolean}true"
@@ -208,7 +224,61 @@
                         propertyIndex="{Boolean}true"
                         useInSpellcheck="{Boolean}true"
                         useInSuggest="{Boolean}true"/>
-                    <!-- Custom property -->
+                    <jcrCreated
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:created"
+                        ordered="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="Date"/>
+                    <cqLastReplicated
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/cq:lastReplicated"
+                        ordered="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="Date"/>
+                    <brandPortalReplicated
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/dam:portalReplicationDate"
+                        ordered="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="Date"/>
+                    <lastReplicationAction
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/cq:lastReplicationAction"
+                        propertyIndex="{Boolean}true"/>
+                    <brandPortalReplicationAction
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/dam:portalReplicationAction"
+                        propertyIndex="{Boolean}true"/>
+                    <scene7Path
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/dam:scene7SanitizedPath"
+                        propertyIndex="{Boolean}true"/>
+                    <cqDrivelock
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/cq:drivelock"
+                        propertyIndex="{Boolean}true"
+                        sync="{Boolean}true"/>
+                    <nodeName
+                        jcr:primaryType="nt:unstructured"
+                        name=":nodeName"
+                        nodeScopeIndex="{Boolean}true" 
+                        useInSuggest="{Boolean}true"/>
+                    <contentFragment
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/contentFragment"
+                        propertyIndex="{Boolean}true"
+                        type="Boolean"/>
+                    <audioBitRate
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/metadata/audioBitrate"
+                        propertyIndex="{Boolean}true"/>
+                    <simsearchVersion
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/metadata/simsearchVersion"
+                        nullCheckEnabled="{Boolean}true"
+                        propertyIndex="{Boolean}true"/>
+                    <!-- Custom property indexRule -->
                     <wkndAdventureType
                         jcr:primaryType="nt:unstructured"
                         name="jcr:content/metadata/wknd:adventureType"
@@ -219,7 +289,7 @@
                 </properties>
             </dam:Asset>
         </indexRules>
-    </damAssetLucene>
+    </damAssetLucene-6-custom-1>    
     <!-- Custom property index -->
     <wkndId
         jcr:primaryType="oak:QueryIndexDefinition"
