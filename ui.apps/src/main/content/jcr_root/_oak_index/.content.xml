@@ -226,11 +226,24 @@
         propertyNames="{Name}[wknd:Id]"
         reindex="{Boolean}false"
         type="property"/>
-    <!-- Custom ordered property index -->
-    <wkndTerminationDate
+    <!-- Custom ordered lucene index -->
+    <wknd.terminationDateLucene-custom-1
         jcr:primaryType="oak:QueryIndexDefinition"
-        propertyNames="{Name}[wknd:terminationDate]"
-        reindex="{Boolean}false"
-        direction="descending"
-        type="ordered"/>        
+        async="async"
+        compatVersion="{Long}2"
+        evaluatePathRestrictions="{Boolean}true"
+        type="lucene">
+        <indexRules jcr:primaryType="nt:unstructured">
+            <nt:unstructured jcr:primaryType="nt:unstructured">
+                <properties jcr:primaryType="nt:unstructured">
+                    <wkndterminationDate
+                        jcr:primaryType="nt:unstructured"
+                        name="wknd:terminationDate"
+                        ordered="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="Date"/>
+                </properties>
+            </nt:unstructured>
+        </indexRules>
+    </wknd.terminationDateLucene-custom-1>     
 </jcr:root>

@@ -7,5 +7,5 @@
     <filter root="/libs/cq/core/content/nav/wknd"/>
     <filter root="/oak:index/damAssetLucene"/>
     <filter root="/oak:index/wkndId"/>
-    <filter root="/oak:index/wkndTerminationDate"/>
+    <filter root="/oak:index/wknd.terminationDateLucene-custom-1"/>
 </workspaceFilter>
