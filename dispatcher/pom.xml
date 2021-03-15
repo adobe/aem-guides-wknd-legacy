@@ -18,7 +18,7 @@
     <!-- ====================================================================== -->
     <artifactId>aem-guides-wknd.dispatcher.ams</artifactId>
     <packaging>pom</packaging>
-    <name>wknd - Dispatcher (AMS)</name>
+    <name>wknd - Disaptcher (AMS)</name>
     <description>HTTP &amp; Dispatcher configurations for WKND Legacy</description>
 
     <build>

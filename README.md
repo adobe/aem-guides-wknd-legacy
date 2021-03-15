@@ -4,7 +4,7 @@ This project is intended to illustrate example conditions identified by Adobe's 
 
 This Git repository contains a project rife with bad practices, incompatible code, and configuration. The violations are used to illustrate a starting condition which can then be juxtaposed against the remediation for specific Best Practice Analyzer codes, broken out by Git branches.
 
-The `legacy` branch contains a basic AEM Maven project generate from the AEM Project Archetype v10, with several additional custom violations.
+The `main` branch contains the AEM Maven project after being run through the [AEM  Repository Modernizer](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/moving/refactoring-tools/repo-modernizer.html?lang=en#refactoring-tools) tool, in order to provide a consistent, best practices Maven project structure baseline that specific BPA-code remediation branches can be easily compared against.
 
 ## Best Practice Analyzer code branches
 

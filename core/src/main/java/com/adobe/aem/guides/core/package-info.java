@@ -13,14 +13,9 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package apps.sling.servlet.errorhandler;
+@Version("1.0")
+@Export(optional = "provide:=true")
+package com.adobe.aem.guides.core;
 
-import com.adobe.cq.sightly.WCMUsePojo;
-
-public class ResponseStatus extends WCMUsePojo {
-    
-    @Override
-    public void activate() throws Exception {
-        getResponse().setStatus(404);
-    }
-}
+import aQute.bnd.annotation.Export;
+import aQute.bnd.annotation.Version;

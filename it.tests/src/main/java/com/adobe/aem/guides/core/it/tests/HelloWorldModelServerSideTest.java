@@ -23,7 +23,7 @@ import org.apache.sling.junit.annotations.TestReference;
 import org.apache.sling.settings.SlingSettingsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.adobe.aem.guides.core.core.models.HelloWorldModel;
+import com.adobe.aem.guides.core.models.HelloWorldModel;
 
 /** 
  *  Test case which uses OSGi services injection

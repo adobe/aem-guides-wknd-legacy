@@ -14,13 +14,18 @@
  |  See the License for the specific language governing permissions and
  |  limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- ====================================================================== -->
+    <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
+    <!-- ====================================================================== -->
     <parent>
         <groupId>com.adobe.aem.guides</groupId>
         <artifactId>aem-guides-wknd</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>2.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -56,13 +61,13 @@
         <!-- Set this to run the server on a specific port
         <http.port></http.port>
          -->
-        
+
         <!-- URL of a server against which to run tests -->
         <test.server.url>http://${aem.host}:${aem.port}</test.server.url>
-        
+
         <!-- Set this to run tests against an existing server instance -->
         <keepJarRunning>false</keepJarRunning>
-        
+
         <!-- Set this to run tests against a specific hostname, if test.server.url is not set-->
         <test.server.hostname />
 
@@ -71,27 +76,27 @@
 
         <!-- Set this to use a different password for remote execution of sling junit tests -->
         <test.server.password />
-        
+
         <!-- Options for the VM that executes our runnable jar -->
         <jar.executor.vm.options>-Xmx512m</jar.executor.vm.options>
-        
+
         <!-- Change this to use longer or shorter timeouts for testing -->
         <sling.testing.timeout.multiplier>1.0</sling.testing.timeout.multiplier>
-        
+
         <!-- Set this to run the executable jar in a specified filesystem folder -->
         <jar.executor.work.folder />
-        
+
         <!-- Options for the jar to execute. $JAREXEC_SERVER_PORT$ is replaced by the
             selected port number -->
         <jar.executor.jar.options>-p $JAREXEC_SERVER_PORT$</jar.executor.jar.options>
-        
+
         <!-- Change this to run selected tests only -->
         <tests.to.run>**/**Test.java</tests.to.run>
     </properties>
-    
+
     <build>
         <plugins>
-           <plugin>
+            <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <configuration>
                     <filesets>
@@ -105,7 +110,7 @@
                     </filesets>
                 </configuration>
             </plugin>
-           <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
@@ -114,7 +119,7 @@
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
-                            <phase>process-resources</phase>
+                        <phase>process-resources</phase>
                         <configuration>
                             <includeArtifactIds>org.apache.sling.launchpad</includeArtifactIds>
                             <excludeTransitive>true</excludeTransitive>
@@ -132,7 +137,7 @@
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
-                            <phase>process-resources</phase>
+                        <phase>process-resources</phase>
                         <configuration>
                             <outputDirectory>${project.build.directory}/sling/additional-bundles</outputDirectory>
                             <excludeTransitive>true</excludeTransitive>
@@ -171,7 +176,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-         </plugins>
+        </plugins>
     </build>
 
     <profiles>
@@ -276,7 +281,7 @@
             <version>2.3.4</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <!-- sling testing tools bundles requires httpclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -290,7 +295,7 @@
             <version>4.1.2</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <!-- actual dependencies -->
         <dependency>
             <groupId>org.apache.sling</groupId>
@@ -325,12 +330,13 @@
         <dependency>
             <groupId>com.adobe.aem.guides</groupId>
             <artifactId>aem-guides-wknd.it.tests</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>2.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.adobe.aem.guides</groupId>
             <artifactId>aem-guides-wknd.core</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>2.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
+
